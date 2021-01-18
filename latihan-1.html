@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name    = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Belajar REact sederhana </title>
+    <link rel = "stylesheet" type="text/css" href = "utama.css">
+</head>
+
+<body>
+
+    <div class = "content" id = "app">
+    </div>
+
+    <script src = "https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src = "https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src = "https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+
+    <script type = "text/babel">
+        
+
+    let Timer = React.createClass({
+			getInitialState: function() {
+				return {secElapsed: 0};
+			},
+
+			componentDidMount: function() {
+				this.interval = setInterval(this.tick, 1000);
+			},
+			
+			componentWillUnmount: function() {
+				clearInterval(this.interval);
+			},
+
+			tick: function() {
+				this.setState({secElapsed: this.state.secElapsed + 1});
+			},
+			
+			render: function() {
+				return (
+					<div>Detik terlewati: {this.state.secElapsed}</div>
+				);
+			}
+		});
+
+		ReactDOM.render(
+            // <Counter/>,
+			<Timer/>,
+			document.getElementById('app')
+		);
+
+    </script>
+</body>
+
+</html>
