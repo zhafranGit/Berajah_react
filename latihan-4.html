@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar React</title>
+    <link rel="stylesheet" href="utama.css">
+
+</head>
+<body>
+    <div class="content">
+        <p>Menampilkan data tabular menggunakan komponen React.<br/><em>data diambil dari: <a href="https://jsonplaceholder.typicode.com/">jsonplaceholder.typicode.com</a></a></em></p>
+    </div>
+
+    <div class="content" id="app"></div>
+
+    
+	<script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+	<script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+	<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+	<script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+
+    <script type="text/babel">
+
+    let ItemDisplay = React.createClass({
+        render:function(){
+            const item = this.props.data;
+            return(
+                <div className="dashedBox">
+                    <strong>{item.name}</strong>
+                    <br/>
+                    &#9742;{item.phone}
+                    <p>
+                    {item.company.name}<br/><small>"{item.company.catchphrase}"</small>    
+                    </p>
+                    <p>
+                    Alamat:{item.address.suite}, {item.address.street},{item.address.city}
+                    </p>
+                </div>
+            );
+        }
+    });
+    
+    let App = React.createClass({
+			getInitialState: function() {
+				return {data: []};
+			},
+			componentDidMount: function() {
+				$.ajax({
+					url: 'https://jsonplaceholder.typicode.com/users',
+					dataType: 'json',
+					cache: true,
+					success: function(data) {
+						this.setState({data: data});
+					}.bind(this)
+				});
+			},
+			render: function() {
+				let items = this.state.data.map(function(item, index) {
+					return (
+						<ItemDisplay key={index} data={item}/>
+					);
+				});
+
+				return (
+					<div>
+						{items.length > 0 ? '' : 'memuat...'}
+						{items}
+					</div>
+				);
+			}
+		});
+
+		ReactDOM.render(
+			<App/>,
+			document.getElementById('app')
+		);
+    </script>
+</body>
+</html>
