@@ -1,0 +1,23 @@
+ * Ide untuk pengembangan selanjutnya:
+    * - menggunakan slider untuk memilih hue
+    * - menampilkan data warna dalam format hexadesimal
+    * - menambah kombinasi nilai rgb
+    * - meningkatkan performa
+    * - dsb
+
+
+ * Ide untuk pengembangan selanjutnya:
+		 * - gunakan kata kunci untuk mem-filter pilihan di DropList
+		 * - gunakan event onBlur untuk menutup DropList
+		 * - membuat tampilan item yang lebih komprehensif (contoh: menampilkan label dan id) di DropList
+		 * - menambahkan ikon suryakanta di TextInput
+		 * - menggunakan listData dinamis
+		 * - dsb.
+
+         
+* Ide untuk pengembangan selanjutnya:
+		 * - mengatur ukuran
+		 * - mengatur animasi
+		 * - mengatur kecepatan gerak
+		 * - mengatur radius
+		 * - dsb.
